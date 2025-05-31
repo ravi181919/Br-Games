@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Tictactoe from "./pages/Tictactoe";
-import Snack from "./pages/Snack.jsx";
+import Snake from "./pages/Snake.jsx";
 
 const router = createBrowserRouter([
   {
@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     element: <App />,
   },
   { path: "/tic-tac-toe", element: <Tictactoe /> },
-  { path: "/snack", element: <Snack /> },
+  { path: "/snake", element: <Snake /> },
 ]);
 
 createRoot(document.getElementById("root")).render(

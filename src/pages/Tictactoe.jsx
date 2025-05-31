@@ -6,13 +6,17 @@ import { GiSkullCrossedBones } from "react-icons/gi";
 import { SiAnaconda } from "react-icons/si";
 
 const Tictactoe = () => {
+
   const [xoIcon, setXoIcon] = React.useState("");
 
-  const handleXoIconsChange = () => {};
+  const handleXoIconsChange = () => {
+    
+  }
 
+  document.title = "BR-Games | Tic Tac Toe"
   return (
     <div className="w-full min-h-[100vh] bg-black/85 dark:bg-white/65 dark:text-black/75 text-white/75 flex flex-col justify-center items-center transition-all duration-800 relative px-16">
-      <div className="absolute w-full top-0 left-0">
+      <div className="absolute w-full top-0 left-0 z-10">
         <Navbar />
       </div>
       <div className="h-[86vh] w-full flex flex-col relative pt-5 pl-5 items-center justify-between">
@@ -85,9 +89,7 @@ const Tictactoe = () => {
                       transition={{ duration: 2, delay: 1, ease: "backInOut" }}
                       className="inline-block w-[8vw] h-[16vh] rounded-md bg-pink-400 shadow"
                       key={horizontalItemsIndex}
-                    >
-                      {}
-                    </motion.span>
+                    >{}</motion.span>
                   ))}
               </div>
             ))}

@@ -14,7 +14,7 @@ const Navbar = () => {
   const link = [
     { URL: "/", linkName: "Home", icons: <FaHome /> },
     { URL: "/tic-tac-toe", linkName: "Tic Tac Toe", icons: <GiTicTacToe /> },
-    { URL: "/snack", linkName: "Snack", icons: <GiSnake /> },
+    { URL: "/snake", linkName: "Snake", icons: <GiSnake /> },
   ];
 
   const themeHandler = () => {

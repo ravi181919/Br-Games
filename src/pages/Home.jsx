@@ -1,6 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 const Home = () => {
+
+  document.title = "BR-Games"
   return (
     <div className="w-full min-h-[86vh]  flex items-center justify-center transition-all duration-800 relative px-16">
       <div className="h-full flex items-center mt-8 justify-center font-[kajiro] flex-col text-shadow-lg">
