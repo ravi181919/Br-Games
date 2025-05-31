@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+::-webkit-scrollbar{
+display: none;
+}
+
+@font-face {
+  font-family: 'Kajiro';
+  src: url('../public/Kajiro/Kajiro\ Bold.ttf') format('truetype');
+  font-weight:bolder;
+  font-style: normal;
+}
+
+/* body {
+  font-family: 'Kajiro', sans-serif;
+} */
