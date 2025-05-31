@@ -29,7 +29,7 @@ const Navbar = () => {
     setDark(!dark);
   };
   return (
-    <div className="w-full h-[14vh] flex items-center pt-2 justify-center transition-all duration-800 py-1">
+    <div className="w-full h-[14vh] flex items-center pt-2 justify-between  transition-all duration-800 py-1">
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}

@@ -2,11 +2,20 @@ import React from "react";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import { BiReset } from "react-icons/bi";
+import { GiSkullCrossedBones } from "react-icons/gi";
+import { SiAnaconda } from "react-icons/si";
+
 const Tictactoe = () => {
+  const [xoIcon, setXoIcon] = React.useState("");
+
+  const handleXoIconsChange = () => {};
+
   return (
-    <div className="w-full min-h-[100vh]  bg-black/85 dark:bg-white/65 dark:text-black/75 text-white/75 justify-center transition-all duration-800 relative px-16">
-      <Navbar />
-      <div className="h-[86vh] w-full flex flex-col  items-center justify-center">
+    <div className="w-full min-h-[100vh] bg-black/85 dark:bg-white/65 dark:text-black/75 text-white/75 flex flex-col justify-center items-center transition-all duration-800 relative px-16">
+      <div className="absolute w-full top-0 left-0">
+        <Navbar />
+      </div>
+      <div className="h-[86vh] w-full flex flex-col relative pt-5 pl-5 items-center justify-between">
         <div className="w-full h-full flex items-end justify-between">
           <div className="w-[60%] text-shadow-lg">
             <motion.h1
@@ -61,7 +70,7 @@ const Tictactoe = () => {
               </motion.span>
             </motion.h1>
           </div>
-          <div className="w-[40%] h-[90%] flex items-start justify-center flex-col gap-4 p-10">
+          <div className="w-[40%] h-[90%] flex items-center justify-start flex-col gap-4 p-10">
             {new Array(3).fill("").map((verticalItems, verticalItemsIndex) => (
               <div
                 className="w-full flex flex-wrap justify-center gap-4"
@@ -76,7 +85,9 @@ const Tictactoe = () => {
                       transition={{ duration: 2, delay: 1, ease: "backInOut" }}
                       className="inline-block w-[8vw] h-[16vh] rounded-md bg-pink-400 shadow"
                       key={horizontalItemsIndex}
-                    ></motion.span>
+                    >
+                      {}
+                    </motion.span>
                   ))}
               </div>
             ))}
@@ -94,12 +105,19 @@ const Tictactoe = () => {
                 className="px-4 py-1 font-bold rounded-md text-md text-shadow-sm shadow flex items-center justify-center gap-2 overflow-hidden"
               >
                 <motion.span
-                  initial={{ y: 100, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  transition={{ duration: 1, delay: 2.2, ease: "backInOut" }}
-                  className="inline-block pt-0.5 font-black"
+                  initial={{ y: 100, color: "rgba(0,0,0,0)", opacity: 0 }}
+                  animate={{ y: 0, color: "#fb64b6", opacity: 1 }}
+                  transition={{ duration: 1, delay: 1.5, ease: "backInOut" }}
+                  className="inline-block font-black pt-1.5"
                 >
-                  <BiReset size={18} />
+                  <motion.span
+                    initial={{ rotate: 0, opacity: 0 }}
+                    animate={{ rotate: -360, opacity: 1 }}
+                    transition={{ duration: 1, delay: 3, ease: "backInOut" }}
+                    className="inline-block"
+                  >
+                    <BiReset size={18} />
+                  </motion.span>
                 </motion.span>
                 <motion.span
                   initial={{ scaleX: 0, opacity: 0 }}
@@ -118,7 +136,7 @@ const Tictactoe = () => {
           initial={{ x: "-100%", opacity: 0.2 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 2, ease: "linear" }}
-          className="text-[3.5vw] pt-2 w-full text-center tracking-widest font-[kajiro]"
+          className="text-[3.5vw] pt-2 mt-1 w-full h-fit  leading- text-center tracking-widest font-[kajiro] relative"
         >
           Challenge your brain in this classic battle of Xs and Os.
         </motion.p>
