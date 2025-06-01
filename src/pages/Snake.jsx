@@ -9,7 +9,7 @@ const Snake = () => {
         <Navbar />
       </div>
 
-      <div className="h-[86vh] w-full flex flex-col relative mt-20 pl-5 items-center justify-between bg-pink-300">
+      <div className="h-[86vh] w-full flex flex-col relative mt-20 pl-5 items-center justify-between bg-pink-300 overflow-hidden">
         <div className="w-full h-[90%] flex items-end justify-between">
           <div className="w-[60%] text-shadow-lg">
             <motion.h1
@@ -71,8 +71,8 @@ const Snake = () => {
               </motion.span>
             </motion.h1>
           </div>
-          <div className="w-[40%] h-full overflow-hidden flex items-center relative">
-            <div className="w-full h-[90%] flex gap-4 relative overflow-hidden">
+          <div className="w-[40%] h-full overflow-hidden flex items-end justify-center relative ">
+            <div className="w-full h-[90%] flex gap-4 relative overflow-hidden ">
               <motion.div
                 initial={{ y: "-100%", opacity: 0.4 }}
                 animate={{ y: "250%", opacity: 1 }}
@@ -84,12 +84,14 @@ const Snake = () => {
                 }}
                 className="w-[5vw] ml-5 mb-0.5 h-[35vh] flex items-end justify-between bg-linear-to-t/increasing from-pink-500 to-pink-200 shadow-md rounded-full px-3.5 py-4"
               >
-                <span className="inline-flex items-center justify-center px-0.5 w-[1vw] mb-0.5 h-[2vh] bg-black shadow-md rounded-full ">
-                  <span className="inline-block w-[0.5vw] h-[1vh] bg-white shadow-md rounded-full"></span>
-                </span>
-                <span className="inline-flex items-center justify-center px-0.5 w-[1vw] mb-0.5 h-[2vh] bg-black shadow-md rounded-full ">
-                  <span className="inline-block w-[0.5vw] h-[1vh] bg-white shadow-md rounded-full"></span>
-                </span>
+                {new Array(2).fill("").map((ani, aniIndex) => (
+                  <span
+                    key={aniIndex}
+                    className="inline-flex items-center justify-center px-0.5 w-[1vw] mb-0.5 h-[2vh] bg-black shadow-md rounded-full "
+                  >
+                    <span className="inline-block w-[0.5vw] h-[1vh] bg-white shadow-md rounded-full"></span>
+                  </span>
+                ))}
               </motion.div>
               <motion.div
                 initial={{ y: "-100%", opacity: 0.4 }}
@@ -103,12 +105,14 @@ const Snake = () => {
                 }}
                 className="w-[5vw] mb-0.5 h-[35vh] flex items-end justify-between bg-linear-to-t/oklch from-pink-500 to-pink-100 shadow-md rounded-md px-3 py-1"
               >
-                <span className="inline-flex items-center justify-center px-0.5 w-[1vw] mb-0.5 h-[2vh] bg-black shadow-md rounded-full ">
-                  <span className="inline-block w-[0.5vw] h-[1vh] bg-white shadow-md rounded-full"></span>
-                </span>
-                <span className="inline-flex items-center justify-center px-0.5 w-[1vw] mb-0.5 h-[2vh] bg-black shadow-md rounded-full ">
-                  <span className="inline-block w-[0.5vw] h-[1vh] bg-white shadow-md rounded-full"></span>
-                </span>
+                {new Array(2).fill("").map((ani, aniIndex) => (
+                  <span
+                    key={aniIndex}
+                    className="inline-flex items-center justify-center px-0.5 w-[1vw] mb-0.5 h-[2vh] bg-black shadow-md rounded-full "
+                  >
+                    <span className="inline-block w-[0.5vw] h-[1vh] bg-white shadow-md rounded-full"></span>
+                  </span>
+                ))}
               </motion.div>
               <motion.div
                 initial={{ y: "250%", opacity: 0.4 }}
@@ -121,12 +125,14 @@ const Snake = () => {
                 }}
                 className="w-[5vw] ml-5 mb-0.5 h-[35vh] flex items-start justify-between bg-linear-to-t/increasing from-pink-500 to-pink-200 shadow-md rounded-full px-3.5 py-4"
               >
-                <span className="inline-flex items-center justify-center px-0.5 w-[1vw] mb-0.5 h-[2vh] bg-black shadow-md rounded-full ">
-                  <span className="inline-block w-[0.5vw] h-[1vh] bg-white shadow-md rounded-full"></span>
-                </span>
-                <span className="inline-flex items-center justify-center px-0.5 w-[1vw] mb-0.5 h-[2vh] bg-black shadow-md rounded-full ">
-                  <span className="inline-block w-[0.5vw] h-[1vh] bg-white shadow-md rounded-full"></span>
-                </span>
+                {new Array(2).fill("").map((ani, aniIndex) => (
+                  <span
+                    key={aniIndex}
+                    className="inline-flex items-center justify-center px-0.5 w-[1vw] mb-0.5 h-[2vh] bg-black shadow-md rounded-full "
+                  >
+                    <span className="inline-block w-[0.5vw] h-[1vh] bg-white shadow-md rounded-full"></span>
+                  </span>
+                ))}
               </motion.div>
               <motion.div
                 initial={{ y: "250%", opacity: 0.4 }}
@@ -140,12 +146,14 @@ const Snake = () => {
                 }}
                 className="w-[5vw] ml-5 mb-0.5 h-[35vh] flex items-start justify-between bg-linear-to-t/oklch from-pink-500 to-pink-100 shadow-md rounded-md px-3 py-1"
               >
-                <span className="inline-flex items-center justify-center px-0.5 w-[1vw] mb-0.5 h-[2vh] bg-black shadow-md rounded-full ">
-                  <span className="inline-block w-[0.5vw] h-[1vh] bg-white shadow-md rounded-full"></span>
-                </span>
-                <span className="inline-flex items-center justify-center px-0.5 w-[1vw] mb-0.5 h-[2vh] bg-black shadow-md rounded-full ">
-                  <span className="inline-block w-[0.5vw] h-[1vh] bg-white shadow-md rounded-full"></span>
-                </span>
+                {new Array(2).fill("").map((ani, aniIndex) => (
+                  <span
+                    key={aniIndex}
+                    className="inline-flex items-center justify-center px-0.5 w-[1vw] mb-0.5 h-[2vh] bg-black shadow-md rounded-full "
+                  >
+                    <span className="inline-block w-[0.5vw] h-[1vh] bg-white shadow-md rounded-full"></span>
+                  </span>
+                ))}
               </motion.div>
             </div>
           </div>
@@ -180,7 +188,6 @@ const Snake = () => {
           >
             classic battle of Xs and Os.
           </motion.span>
-          {/* Challenge your brain in this classic battle of Xs and Os. */}
         </motion.p>
       </div>
     </div>
