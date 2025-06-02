@@ -7,7 +7,10 @@ import { SiAnaconda } from "react-icons/si";
 
 const Tictactoe = () => {
 
-  const [xoIcon, setXoIcon] = React.useState("");
+  const [xoIcon, setXoIcon] = React.useState(Array(9).fill(null));
+
+  console.log(xoIcon);
+  
 
   const handleXoIconsChange = () => {
     
