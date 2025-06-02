@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { GiTicTacToe } from "react-icons/gi";
 import { BsThermometerSun } from "react-icons/bs";
@@ -8,26 +7,18 @@ import { FaHome } from "react-icons/fa";
 import whiteLogo from "/noBgWhite.png";
 import blackLogo from "/noBgColor.png";
 import { motion } from "framer-motion";
+import { useDark } from "../context/theme/DarkContext";
 
 const Navbar = () => {
-  const [dark, setDark] = useState(false);
+  // theme context =>
+  const { dark, themeHandler } = useDark();
+
+  // links =>
   const link = [
     { URL: "/", linkName: "Home", icons: <FaHome /> },
     { URL: "/tic-tac-toe", linkName: "Tic Tac Toe", icons: <GiTicTacToe /> },
     { URL: "/snake", linkName: "Snake", icons: <GiSnake /> },
   ];
-
-  const themeHandler = () => {
-    const theme = document.documentElement.classList;
-    if (dark) {
-      theme.remove("dark");
-      theme.add("light");
-    } else {
-      theme.remove("light");
-      theme.add("dark");
-    }
-    setDark(!dark);
-  };
   return (
     <div className="w-full h-[14vh] flex items-center pt-2 justify-between  transition-all duration-800 py-1">
       <motion.div

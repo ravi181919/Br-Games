@@ -5,6 +5,7 @@ import App from "./App.jsx";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Tictactoe from "./pages/Tictactoe";
 import Snake from "./pages/Snake.jsx";
+import { DarkContextProvider } from "./context/theme/DarkContext.jsx";
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <DarkContextProvider> 
+      <RouterProvider router={router} />
+    </DarkContextProvider>
   </StrictMode>
 );
