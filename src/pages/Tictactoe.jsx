@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import { BiReset } from "react-icons/bi";
@@ -6,17 +6,21 @@ import { GiSkullCrossedBones } from "react-icons/gi";
 import { SiAnaconda } from "react-icons/si";
 
 const Tictactoe = () => {
-
   const [xoIcon, setXoIcon] = React.useState(Array(9).fill(null));
+  const [turnOf, setTurnOf] = useState(true);
 
-  console.log(xoIcon);
-  
+  const handleXoIconsChange = (index) => {
+    console.log(index);
 
-  const handleXoIconsChange = () => {
+    const makeCopyOfXoIconState = [...xoIcon];
+    makeCopyOfXoIconState[index] = turnOf ? "X" : "O";
     
-  }
+    setXoIcon(makeCopyOfXoIconState);
+    console.log(makeCopyOfXoIconState);
+    setTurnOf(!turnOf);
+  };
 
-  document.title = "BR-Games | Tic Tac Toe"
+  document.title = "BR-Games | Tic Tac Toe";
   return (
     <div className="w-full min-h-[100vh] bg-black/85 dark:bg-white/65 dark:text-black/75 text-white/75 flex flex-col justify-center items-center transition-all duration-800 relative px-16">
       <div className="absolute w-full top-0 left-0 z-10">
@@ -78,22 +82,29 @@ const Tictactoe = () => {
             </motion.h1>
           </div>
           <div className="w-[40%] h-[90%] flex items-center justify-start flex-col gap-4 p-10">
-            {new Array(3).fill("").map((verticalItems, verticalItemsIndex) => (
+            {new Array(3).fill("").map((_, verticalItemsIndex) => (
               <div
                 className="w-full flex flex-wrap justify-center gap-4"
                 key={verticalItemsIndex}
               >
-                {new Array(3)
-                  .fill("")
-                  .map((horizontalItems, horizontalItemsIndex) => (
-                    <motion.span
-                      initial={{ scale: 0, opacity: 0 }}
-                      animate={{ scale: 1, opacity: 1 }}
-                      transition={{ duration: 2, delay: 1, ease: "backInOut" }}
-                      className="inline-block w-[8vw] h-[16vh] rounded-md bg-pink-400 shadow"
-                      key={horizontalItemsIndex}
-                    >{}</motion.span>
-                  ))}
+                {new Array(3).fill("").map((_, horizontalItemsIndex) => (
+                  <motion.span
+                    initial={{ scale: 0, opacity: 0 }}
+                    animate={{ scale: 1, opacity: 1 }}
+                    transition={{ duration: 2, delay: 1, ease: "backInOut" }}
+                    className="inline-block w-[8vw] h-[16vh] rounded-md bg-pink-400 shadow"
+                    key={horizontalItemsIndex}
+                    onClick={() =>
+                      handleXoIconsChange(
+                        verticalItemsIndex * 3 + horizontalItemsIndex
+                      )
+                    }
+                  >
+                    {
+                    xoIcon[verticalItemsIndex * 3 + horizontalItemsIndex]
+                    }
+                  </motion.span>
+                ))}
               </div>
             ))}
 
