@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
-import { BiReset } from "react-icons/bi";
 import { GiSkullCrossedBones } from "react-icons/gi";
 import { SiAnaconda } from "react-icons/si";
 import ResetBtn from "../components/ResetBtn";
@@ -87,7 +86,7 @@ const Tictactoe = () => {
                 Is Winner of this game{" "}
               </motion.span>
             </div>
-            <ResetBtn bgColor="#000000d5" reset={resetHandler} />
+            <ResetBtn bgColor="#000000d5" reset={resetHandler} name="Start New Game!"/>
           </div>
         </div>
       )}

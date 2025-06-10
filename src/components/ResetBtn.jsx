@@ -2,7 +2,7 @@ import React from 'react'
 import { BiReset } from 'react-icons/bi'
 import { motion } from 'framer-motion'
 
-const ResetBtn = ({bgColor="#FFB921", reset}) => {
+const ResetBtn = ({bgColor="#FFB921", reset, name="Reset"}) => {
   return (
     <motion.div
               initial={{ y: 100, opacity: 0 }}
@@ -37,7 +37,7 @@ const ResetBtn = ({bgColor="#FFB921", reset}) => {
                   animate={{ scaleX: 1, opacity: 1 }}
                   transition={{ duration: 1.4, delay: 2, ease: "backInOut" }}
                 >
-                  Reset
+                  {name}
                 </motion.span>
               </motion.button>
             </motion.div>
