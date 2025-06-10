@@ -4,20 +4,50 @@ import { motion } from "framer-motion";
 import { BiReset } from "react-icons/bi";
 import { GiSkullCrossedBones } from "react-icons/gi";
 import { SiAnaconda } from "react-icons/si";
+import ResetBtn from "../components/ResetBtn";
 
 const Tictactoe = () => {
   const [xoIcon, setXoIcon] = React.useState(Array(9).fill(null));
   const [turnOf, setTurnOf] = useState(true);
 
-  const handleXoIconsChange = (index) => {
-    console.log(index);
+  const checkHowWonTheGame = () => {
+    const checkIndexOfBox = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8],
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8],
+      [0, 4, 8],
+      [2, 4, 6],
+    ];
 
+    for (let i of checkIndexOfBox) {
+      const [a, b, c] = i;
+      if (
+        xoIcon[a] !== null &&
+        xoIcon[a] === xoIcon[b] &&
+        xoIcon[a] === xoIcon[c]
+      ) {
+        return xoIcon[a];
+      }
+    }
+    return false;
+  };
+
+  const winnerIs = checkHowWonTheGame();
+  console.log(winnerIs);
+
+  const handleXoIconsChange = (index) => {
+    if (xoIcon[index] !== null) return;
     const makeCopyOfXoIconState = [...xoIcon];
     makeCopyOfXoIconState[index] = turnOf ? "X" : "O";
-    
     setXoIcon(makeCopyOfXoIconState);
-    console.log(makeCopyOfXoIconState);
     setTurnOf(!turnOf);
+  };
+
+  const resetHandler = () => {
+    setXoIcon(Array(9).fill(null));
   };
 
   document.title = "BR-Games | Tic Tac Toe";
@@ -26,7 +56,43 @@ const Tictactoe = () => {
       <div className="absolute w-full top-0 left-0 z-10">
         <Navbar />
       </div>
-      <div className="h-[86vh] w-full flex flex-col relative pt-5 pl-5 items-center justify-between">
+
+      {winnerIs && (
+        <div className="w-full absolute top-0 left-0 z-[1] bg-[#000000e9] h-full flex items-center justify-center">
+          <div className="w-[35vw] h-[45vh] ml-10 flex flex-col gap-3 justify-center items-center p-[2vw] shadow-md relative rounded-md shadow-black/50 bg-[#e3e2df92]">
+            <div className="flex flex-col items-center">
+              <motion.span
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 1, ease: "backInOut" }}
+                className="text-black text-shadow-lg drop-shadow-sm font-bold inline-block"
+              >
+                {(() => {
+                  return winnerIs === "X" ? (
+                    <motion.span>
+                      {" "}
+                      <GiSkullCrossedBones size={79} />
+                    </motion.span>
+                  ) : winnerIs === "O" ? (
+                    <SiAnaconda size={79} />
+                  ) : null;
+                })()}
+              </motion.span>
+              <motion.span
+                initial={{ scaleX: 0, opacity: 0 }}
+                animate={{ scaleX: 1, opacity: 1 }}
+                transition={{ duration: 0.8, delay: 1, ease: "backInOut" }}
+                className="capitalize text-shadow-md text-lg pt-10 pb-2 leading-0 font-bold inline-block"
+              >
+                Is Winner of this game{" "}
+              </motion.span>
+            </div>
+            <ResetBtn bgColor="#000000d5" reset={resetHandler} />
+          </div>
+        </div>
+      )}
+
+      <div className="h-[86vh] w-full flex flex-col relative  pl-5 items-center justify-between">
         <div className="w-full h-full flex items-end justify-between">
           <div className="w-[60%] text-shadow-lg">
             <motion.h1
@@ -92,7 +158,7 @@ const Tictactoe = () => {
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{ scale: 1, opacity: 1 }}
                     transition={{ duration: 2, delay: 1, ease: "backInOut" }}
-                    className="inline-block w-[8vw] h-[16vh] rounded-md bg-pink-400 shadow"
+                    className="inline-flex w-[8vw] h-[16vh] items-center justify-center rounded-md bg-pink-400 shadow"
                     key={horizontalItemsIndex}
                     onClick={() =>
                       handleXoIconsChange(
@@ -100,50 +166,21 @@ const Tictactoe = () => {
                       )
                     }
                   >
-                    {
-                    xoIcon[verticalItemsIndex * 3 + horizontalItemsIndex]
-                    }
+                    {(() => {
+                      const value =
+                        xoIcon[verticalItemsIndex * 3 + horizontalItemsIndex];
+                      return value === "X" ? (
+                        <GiSkullCrossedBones size={35} />
+                      ) : value === "O" ? (
+                        <SiAnaconda size={35} />
+                      ) : null;
+                    })()}
                   </motion.span>
                 ))}
               </div>
             ))}
 
-            <motion.div
-              initial={{ y: 100, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              transition={{ duration: 1, delay: 1, ease: "backInOut" }}
-              className="w-full h-[10%] flex justify-center"
-            >
-              <motion.button
-                initial={{ backgroundColor: "rgba(0,0,0,0)", opacity: 0.5 }}
-                animate={{ backgroundColor: "#FFB921", opacity: 1 }}
-                transition={{ duration: 1.2, delay: 1.5, ease: "backIn" }}
-                className="px-4 py-1 font-bold rounded-md text-md text-shadow-sm shadow flex items-center justify-center gap-2 overflow-hidden"
-              >
-                <motion.span
-                  initial={{ y: 100, color: "rgba(0,0,0,0)", opacity: 0 }}
-                  animate={{ y: 0, color: "#fb64b6", opacity: 1 }}
-                  transition={{ duration: 1, delay: 1.5, ease: "backInOut" }}
-                  className="inline-block font-black pt-1.5"
-                >
-                  <motion.span
-                    initial={{ rotate: 0, opacity: 0 }}
-                    animate={{ rotate: -360, opacity: 1 }}
-                    transition={{ duration: 1, delay: 3, ease: "backInOut" }}
-                    className="inline-block"
-                  >
-                    <BiReset size={18} />
-                  </motion.span>
-                </motion.span>
-                <motion.span
-                  initial={{ scaleX: 0, opacity: 0 }}
-                  animate={{ scaleX: 1, opacity: 1 }}
-                  transition={{ duration: 1.4, delay: 2, ease: "backInOut" }}
-                >
-                  Reset
-                </motion.span>
-              </motion.button>
-            </motion.div>
+            <ResetBtn reset={resetHandler} />
           </div>
         </div>
 
